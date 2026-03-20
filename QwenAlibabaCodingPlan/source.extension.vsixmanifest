@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PackageManifest Version="2.0.0" xmlns="http://schemas.microsoft.com/developer/vsx-syndication-schema/2010">
+  <Metadata>
+    <Identity Id="QwenAlibabaCodingPlan" Version="1.0.0" Publisher="Alibaba" Language="en-US" />
+    <DisplayName>Qwen Alibaba Coding Plan</DisplayName>
+    <Description>AI-powered coding assistant extension integrating Qwen for code completion, chat, and analysis</Description>
+    <License>License.txt</License>
+    <Icon>Resources\icon.png</Icon>
+  </Metadata>
+  <Dependencies>
+    <Dependency Id="Microsoft.Framework.NDP" DisplayName="Microsoft .NET Framework" Version="4.7.2" />
+  </Dependencies>
+  <Prerequisites>
+    <Prerequisite Id="Microsoft.VisualStudio.Component.CoreEditor" Version="[17.0,18.0)" />
+  </Prerequisites>
+  <Assets>
+    <Asset Type="Microsoft.VisualStudio.VsPackage" Path="QwenAlibabaCodingPlan.pkgdef" />
+    <Asset Type="Microsoft.VisualStudio.MefComponent" Path="QwenAlibabaCodingPlan.dll" />
+  </Assets>
+  <Commands>
+    <Command id="QwenAlibabaCodingPlan.QwenChatCommand" priority="0x0001">
+      <Parent guid="guidSHLMainMenu" id="IDG_VS_TOOLS" />
+    </Command>
+    <Command id="QwenAlibabaCodingPlan.AnalyzeCodeCommand" priority="0x0002">
+      <Parent guid="guidSHLMainMenu" id="IDG_VS_EDIT" />
+    </Command>
+    <Command id="QwenAlibabaCodingPlan.RefactorCodeCommand" priority="0x0003">
+      <Parent guid="guidSHLMainMenu" id="IDG_VS_EDIT" />
+    </Command>
+  </Commands>
+  <CommandPlacements>
+    <CommandPlacement CommandId="QwenAlibabaCodingPlan.QwenChatCommand" priority="0x1000">
+      <Parent guid="guidSHLMainMenu" id="IDM_VS_MENU_TOOLS" />
+    </CommandPlacement>
+    <CommandPlacement CommandId="QwenAlibabaCodingPlan.AnalyzeCodeCommand" priority="0x1000">
+      <Parent guid="guidSHLMainMenu" id="IDM_VS_MENU_EDIT" />
+    </CommandPlacement>
+    <CommandPlacement CommandId="QwenAlibabaCodingPlan.RefactorCodeCommand" priority="0x1000">
+      <Parent guid="guidSHLMainMenu" id="IDM_VS_MENU_EDIT" />
+    </CommandPlacement>
+  </CommandPlacements>
+  <ToolWindows>
+    <ToolWindow Id="QwenChatWindow" Width="400" Height="500" Dockable="Floating" />
+  </ToolWindows>
+</PackageManifest>

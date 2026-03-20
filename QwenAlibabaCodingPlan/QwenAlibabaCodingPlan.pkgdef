@@ -1,0 +1,13 @@
+// Visual Studio extension package definition
+// This file is auto-generated during build
+
+[$RootKey$\InstalledProducts\QwenAlibabaCodingPlan]
+@="#110"
+"ProductVersion"="1.0.0"
+"ProductName"="Qwen Alibaba Coding Plan"
+"CompanyName"="Alibaba"
+[$RootKey$\Packages\{a1b2c3d4-e5f6-7890-abcd-ef1234567890}]
+@="QwenAlibabaCodingPlan.QwenChatPackage"
+"ID"="Microsoft.VSDesigner.CSharp.VSProject"
+[$RootKey$\Menus]
+"{a1b2c3d4-e5f6-7890-abcd-ef1234567891}"="Qwen Chat"

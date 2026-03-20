@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Commands package="guidQwenAlibabaCodingPlan">
+  <Menus>
+    <Menu id="QwenChatMenu" guid="guidQwenAlibabaCodingPlan" priority="0x0000">
+      <Parent guid="guidSHLMainMenu" id="IDM_VS_MENU_TOOLS" />
+      <CommandFlag>DefaultDisabled</CommandFlag>
+      <Strings>
+        <ButtonText>Open Qwen Chat</ButtonText>
+      </Strings>
+    </Menu>
+  </Menus>
+  <Buttons>
+    <Button id="cmdidQwenChat" guid="guidQwenAlibabaCodingPlan">
+      <Parent guid="guidQwenAlibabaCodingPlan" id="QwenChatMenu" />
+      <CommandFlag>DefaultDisabled</CommandFlag>
+      <Strings>
+        <ButtonText>Open Qwen Chat</ButtonText>
+      </Strings>
+    </Button>
+  </Buttons>
+  <CommandPlacements>
+    <CommandPlacement command="cmdidQwenChat" priority="0x1000">
+      <Parent guid="guidSHLMainMenu" id="IDM_VS_MENU_TOOLS" />
+    </CommandPlacement>
+  </CommandPlacements>
+</Commands>
