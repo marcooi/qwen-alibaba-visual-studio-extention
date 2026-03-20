@@ -1,5 +1,7 @@
-<Project Sdk="Microsoft.NET.Sdk">
+<?xml version="1.0" encoding="utf-8"?>
+<Project Sdk="Microsoft.NET.Sdk" ToolsVersion="15.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <TargetFramework>net472</TargetFramework>
     <RootNamespace>QwenAlibabaCodingPlan</RootNamespace>
     <AssemblyName>QwenAlibabaCodingPlan</AssemblyName>
@@ -7,12 +9,12 @@
     <VSSDKTargetPlatformRegKey>v15.0</VSSDKTargetPlatformRegKey>
     <VsPackageRegistration>AllowsBackgroundLoading</VsPackageRegistration>
     <DefaultItemExcludes>$(DefaultItemExcludes);$(MSBuildProjectDirectory)\obj\**</DefaultItemExcludes>
-    <StartUpObject>QwenAlibabaCodingPlan.QwenChatPackage</StartUpObject>
     <AssemblyVersion>1.0.0.0</AssemblyVersion>
     <FileVersion>1.0.0.0</FileVersion>
     <Company>Alibaba</Company>
     <Product>Qwen Alibaba Coding Plan</Product>
     <Description>AI-powered coding assistant extension for Visual Studio 2022</Description>
+    <OutputType>Library</OutputType>
   </PropertyGroup>
 
   <ItemGroup>
@@ -37,4 +39,6 @@
       <LastGenOutput>Strings.Designer.cs</LastGenOutput>
     </EmbeddedResource>
   </ItemGroup>
+
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
 </Project>
