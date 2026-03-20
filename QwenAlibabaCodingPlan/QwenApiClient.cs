@@ -112,6 +112,12 @@ namespace QwenAlibabaCodingPlan
             var prompt = $"Refactor the following code to {goal}. Provide only the refactored code:\n\n```{code}```";
             return await SendChatMessageAsync(prompt);
         }
+
+        public async Task<string> GenerateCodeAsync(string prompt, string language)
+        {
+            var fullPrompt = $"Generate {language} code for the following request. Provide only the code, no explanations:\n\n{prompt}";
+            return await SendChatMessageAsync(fullPrompt);
+        }
     }
 
     public class ChatMessage

@@ -194,4 +194,71 @@ namespace QwenAlibabaCodingPlan
             }
         }
     }
+
+    internal sealed class GenerateCodeCommand
+    {
+        public const int CommandId = 0x0103;
+        public static readonly Guid CommandSet = new Guid("a1b2c3d4-e5f6-7890-abcd-ef1234567891");
+
+        private readonly QwenChatPackage _package;
+
+        private GenerateCodeCommand(QwenChatPackage package)
+        {
+            _package = package ?? throw new ArgumentNullException(nameof(package));
+            var commandService = ServiceProvider.GetService(typeof(IMenuCommandService)) as IMenuCommandService;
+            commandService?.AddCommand(new MenuCommand(Execute, new CommandID(CommandSet, CommandId)));
+        }
+
+        public static void Initialize(QwenChatPackage package)
+        {
+            new GenerateCodeCommand(package);
+        }
+
+        private async void Execute(object sender, EventArgs e)
+        {
+            var dte = ServiceProvider.GetService(typeof(DTE)) as DTE;
+
+            // Show the code generator dialog
+            var dialog = new CodeGeneratorWindow();
+            if (dialog.ShowDialog() != true || string.IsNullOrWhiteSpace(dialog.Prompt))
+            {
+                return;
+            }
+
+            var prompt = dialog.Prompt;
+            var language = dialog.Language;
+
+            // Show generating status
+            VsShellUtilities.ShowMessageBox(
+                _package,
+                "Generating code... Please wait.",
+                "Qwen Generate",
+                OLEMSGICON.OLEMSGICON_INFO,
+                OLEMSGBUTTON.OLEMSGBUTTON_OK);
+
+            var result = await _package.ApiClient.GenerateCodeAsync(prompt, language);
+
+            if (dte?.ActiveDocument != null)
+            {
+                var document = dte.ActiveDocument;
+                var selection = document.Selection as TextSelection;
+
+                if (selection != null)
+                {
+                    selection.Insert(result);
+                    document.Activate();
+                }
+            }
+            else
+            {
+                // No active document, show in message box
+                VsShellUtilities.ShowMessageBox(
+                    _package,
+                    "Generated code:\n\n" + result,
+                    "Qwen Generate",
+                    OLEMSGICON.OLEMSGICON_INFO,
+                    OLEMSGBUTTON.OLEMSGBUTTON_OK);
+            }
+        }
+    }
 }

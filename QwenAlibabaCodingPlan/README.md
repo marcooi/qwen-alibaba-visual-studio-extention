@@ -67,8 +67,65 @@ Tools
 
 Edit
 ├── Analyze Code with Qwen    → Analyzes selected code
-└── Refactor Code with Qwen   → Refactors selected code
+├── Refactor Code with Qwen   → Refactors selected code
+└── Generate Code with Qwen   → Generate new code from description
 ```
+
+### Code Generator Dialog
+```
++----------------------------------------------------------+
+|  Qwen Code Generator                                     |
++----------------------------------------------------------+
+|  Template:  [Custom                        ▼]           |
+|  Describe what you want:                                 |
+|  [Create a REST API controller for user                 |
+|   management with CRUD operations in C#            ]   |
+|                                                          |
+|  Language:  [C#                              ▼]         |
+|                                                          |
+|  Tip: Select a template above or write custom prompt    |
+|                                        [Generate] [Cancel]|
++----------------------------------------------------------+
+```
+
+- **Template:** Quick templates for common tasks (see below)
+- **Prompt:** Describe what code you want (e.g., "Create a REST API controller for user management")
+- **Language:** Select from dropdown (C#, Python, JavaScript, SQL, etc.)
+- **Output:** Generated code is inserted at cursor position
+
+### Code Generator Templates
+
+#### MS SQL Templates
+| Template | Description |
+|----------|-------------|
+| SQL - Create Table | Generate CREATE TABLE statement |
+| SQL - Select Query | Generate SELECT with WHERE clause |
+| SQL - Insert Query | Generate INSERT statement |
+| SQL - Update Query | Generate UPDATE statement |
+| SQL - Delete Query | Generate DELETE statement |
+| SQL - Stored Procedure | Generate stored procedure |
+
+#### C# Templates
+| Template | Description |
+|----------|-------------|
+| C# - SQL Connection | ADO.NET connection method |
+| C# - SQL Reader | SqlDataReader code |
+| C# - Entity Model | Entity class from table |
+| C# - Repository | CRUD repository pattern |
+| C# - Dapper Query | Dapper ORM queries |
+| C# - EF Core Context | Entity Framework Core DbContext |
+| C# - SQL Parameterized Query | SQL injection safe queries |
+
+#### Python Templates
+| Template | Description |
+|----------|-------------|
+| Python - SQL Connection | pyodbc connection |
+| Python - SQL Query | Query execution |
+
+#### JavaScript Templates
+| Template | Description |
+|----------|-------------|
+| JS - MSSQL Query | tedious/mssql library |
 
 ## Features
 
@@ -92,9 +149,15 @@ Edit
 - Improve readability and performance
 - Access via **Edit > Refactor Code with Qwen**
 
+### 💻 Code Generation
+- Generate new code from description
+- Supports multiple languages (C#, Python, JavaScript, etc.)
+- Insert generated code at cursor position
+- Access via **Edit > Generate Code with Qwen**
+
 ## Requirements
 
-- Visual Studio 2022 (Windows)
+- Visual Studio 2022 (Windows) or SSMS 22 (built on VS 2022 shell)
 - .NET Framework 4.7.2
 - Qwen API Key (free from [DashScope](https://dashscope.console.aliyun.com/))
 
@@ -161,6 +224,14 @@ You can also type any custom model name directly in the Model field.
 2. Go to **Edit > Refactor Code with Qwen**
 3. Refactored code replaces the selection
 
+### Generating Code
+1. Position cursor where you want code inserted
+2. Go to **Edit > Generate Code with Qwen**
+3. Enter a description (e.g., "Create a login form with email validation")
+4. Select the programming language
+5. Click Generate
+6. Code is inserted at cursor position
+
 ### Code Completion
 1. Type `//qwen` at any point in your code
 2. A completion list appears with options
@@ -177,6 +248,7 @@ QwenAlibabaCodingPlan/
 ├── QwenApiClient.cs                # Qwen API client
 ├── QwenCompletionSource.cs         # Intellisense provider
 ├── Commands.cs                     # Menu commands
+├── CodeGeneratorWindow.cs          # Code generation dialog
 ├── QwenSettings.cs                 # Settings storage
 ├── QwenSettingsWindow.cs           # Settings dialog
 ├── Resources/

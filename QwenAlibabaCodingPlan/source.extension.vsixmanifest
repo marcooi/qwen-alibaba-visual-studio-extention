@@ -11,7 +11,7 @@
     <Dependency Id="Microsoft.Framework.NDP" DisplayName="Microsoft .NET Framework" Version="4.7.2" />
   </Dependencies>
   <Prerequisites>
-    <Prerequisite Id="Microsoft.VisualStudio.Component.CoreEditor" Version="[17.0,18.0)" />
+    <Prerequisite Id="Microsoft.VisualStudio.Component.CoreEditor" Version="[17.0,19.0)" />
   </Prerequisites>
   <Assets>
     <Asset Type="Microsoft.VisualStudio.VsPackage" Path="QwenAlibabaCodingPlan.pkgdef" />
@@ -27,6 +27,9 @@
     <Command id="QwenAlibabaCodingPlan.RefactorCodeCommand" priority="0x0003">
       <Parent guid="guidSHLMainMenu" id="IDG_VS_EDIT" />
     </Command>
+    <Command id="QwenAlibabaCodingPlan.GenerateCodeCommand" priority="0x0004">
+      <Parent guid="guidSHLMainMenu" id="IDG_VS_EDIT" />
+    </Command>
   </Commands>
   <CommandPlacements>
     <CommandPlacement CommandId="QwenAlibabaCodingPlan.QwenChatCommand" priority="0x1000">
@@ -36,6 +39,9 @@
       <Parent guid="guidSHLMainMenu" id="IDM_VS_MENU_EDIT" />
     </CommandPlacement>
     <CommandPlacement CommandId="QwenAlibabaCodingPlan.RefactorCodeCommand" priority="0x1000">
+      <Parent guid="guidSHLMainMenu" id="IDM_VS_MENU_EDIT" />
+    </CommandPlacement>
+    <CommandPlacement CommandId="QwenAlibabaCodingPlan.GenerateCodeCommand" priority="0x1000">
       <Parent guid="guidSHLMainMenu" id="IDM_VS_MENU_EDIT" />
     </CommandPlacement>
   </CommandPlacements>

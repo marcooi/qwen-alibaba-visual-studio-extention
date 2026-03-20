@@ -44,6 +44,7 @@ namespace QwenAlibabaCodingPlan
             QwenChatCommand.Initialize(this);
             AnalyzeCodeCommand.Initialize(this);
             RefactorCodeCommand.Initialize(this);
+            GenerateCodeCommand.Initialize(this);
         }
 
         public override IVsAsyncToolWindowSession CreateToolWindowSessionAsync(Type toolWindowType, IVsToolWindowSession session, CancellationToken cancellationToken)
